@@ -5,7 +5,8 @@ class AutoComplete{
         this.inputList = document.getElementById(listElement);
         this.createElement = (data, inputList) => {
             let keyword = this.inputFind.value;
-
+            this.inputList.style.width = this.inputFind.offsetWidth + "px";
+            
             if(keyword != ''){
                 data.forEach(element => {
                     var li = this.actions.renderElementList(element);
