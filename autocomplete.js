@@ -5,7 +5,6 @@ class AutoComplete{
         this.inputList = document.getElementById(listElement);
         this.createElement = (data, inputList) => {
             let keyword = this.inputFind.value;
-            this.inputList.style.width = this.inputFind.offsetWidth + "px";
             
             if(keyword != ''){
                 data.forEach(element => {
@@ -17,7 +16,7 @@ class AutoComplete{
                 })
             }
         }
-
+        
         //create default functions
         let defaultActions = {
             src : [],
@@ -60,10 +59,16 @@ class AutoComplete{
         }
 
         //Events
+        this.inputList.style.width = this.inputFind.offsetWidth + "px";
+        window.addEventListener('resize', () =>{
+            this.inputList.style.width = this.inputFind.offsetWidth + "px";
+        });
+        
         this.actions.clearAutoCompleteList(this.inputList);
         document.addEventListener('click', () => {
             this.actions.clearAutoCompleteList(this.inputList);
         })
+        
         this.inputFind.addEventListener('keyup', () =>{
             let keyword = this.inputFind.value;
             if(keyword != ''){
